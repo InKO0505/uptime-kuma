@@ -86,6 +86,7 @@
                                         <option value="mqtt">MQTT</option>
                                         <option value="ntp">NTP</option>
                                         <option value="rabbitmq">RabbitMQ</option>
+                                        <option value="redfish">Redfish (BMC)</option>
                                         <option v-if="!$root.info.isContainer" value="sip-options">
                                             SIP Options Ping
                                         </option>
@@ -190,7 +191,8 @@
                                     monitor.type === 'http' ||
                                     monitor.type === 'keyword' ||
                                     monitor.type === 'json-query' ||
-                                    monitor.type === 'real-browser'
+                                    monitor.type === 'real-browser' ||
+                                    monitor.type === 'redfish'
                                 "
                                 class="my-3"
                             >
@@ -1300,6 +1302,44 @@
                                         autocomplete="new-password"
                                         :required="true"
                                     />
+                                </div>
+                            </template>
+
+                            <template v-if="monitor.type === 'redfish'">
+                                <div class="my-3">
+                                    <label for="redfish-user" class="form-label">{{ $t("Username") }}</label>
+                                    <input
+                                        id="redfish-user"
+                                        v-model="monitor.basic_auth_user"
+                                        type="text"
+                                        class="form-control"
+                                        autocomplete="username"
+                                    />
+                                </div>
+
+                                <div class="my-3">
+                                    <label for="redfish-pass" class="form-label">{{ $t("Password") }}</label>
+                                    <HiddenInput
+                                        id="redfish-pass"
+                                        v-model="monitor.basic_auth_pass"
+                                        autocomplete="new-password"
+                                    />
+                                </div>
+
+                                <div class="my-3 form-check">
+                                    <input
+                                        id="redfish-ignore-tls"
+                                        v-model="monitor.ignoreTls"
+                                        class="form-check-input"
+                                        type="checkbox"
+                                    />
+                                    <label class="form-check-label" for="redfish-ignore-tls">
+                                        {{ $t("ignoreTLSError") }}
+                                    </label>
+                                </div>
+
+                                <div class="form-text">
+                                    {{ $t("redfishHelpText") }}
                                 </div>
                             </template>
 
