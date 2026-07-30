@@ -1333,6 +1333,7 @@
     "RabbitMQ Username": "RabbitMQ Username",
     "RabbitMQ Password": "RabbitMQ Password",
     "rabbitmqHelpText": "To use the monitor, you will need to enable the Management Plugin in your RabbitMQ setup. For more information, please consult the {rabitmq_documentation}.",
+    "redfishHelpText": "Enter the full Redfish resource URL of the BMC, e.g. https://bmc.example.com/redfish/v1/Systems/1 or /redfish/v1/Chassis/1/Thermal. The monitor reports DOWN when any component's health (power supplies, fans, temperatures, etc.) is not \"OK\". Enable \"Ignore TLS/SSL error\" for self-signed BMC certificates.",
     "SendGrid API Key": "SendGrid API Key",
     "Separate multiple email addresses with commas": "Separate multiple email addresses with commas",
     "brevoApiKey": "Brevo API Key",
